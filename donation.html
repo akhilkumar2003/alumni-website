@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKR University Alumni Association - Donate</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a3e72; /* Dark blue - common university color */
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 62, 114, 0.8), rgba(26, 62, 114, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Donation Form */
+        .donation-section {
+            padding: 60px 0;
+        }
+        
+        .donation-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .donation-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-right: 30px;
+        }
+        
+        .donation-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #1a3e72;
+            margin-bottom: 20px;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+        
+        .donation-info p {
+            margin-bottom: 20px;
+        }
+        
+        .impact-list {
+            margin: 25px 0;
+        }
+        
+        .impact-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .impact-list li::before {
+            content: '✓';
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .amount-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .amount-option {
+            flex: 1;
+            min-width: 80px;
+        }
+        
+        .amount-option input[type="radio"] {
+            display: none;
+        }
+        
+        .amount-option label {
+            display: block;
+            padding: 12px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .amount-option input[type="radio"]:checked + label {
+            background-color: #1a3e72;
+            color: white;
+        }
+        
+        .custom-amount {
+            margin-top: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background-color: #d35400;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #4d482c;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .donation-info {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/tkrportal.jpg" alt="TKR University Logo">
+                <div class="logo-text">
+                    <h1>TKR University</h1>
+                    <p>Alumni Association</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="index.html">Events</a></li>
+                    <li><a href="#footer-section">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>Support</h2>
+            <p>Your generous donation helps us provide scholarships, improve campus facilities, and support student programs that make TKR University a thriving academic community.</p>
+        </div>
+    </section>
+    
+    <section class="donation-section">
+        <div class="container donation-container">
+            <div class="donation-info">
+                <h2 class="section-title">Make a Difference</h2>
+                <p>As a proud alumnus of TKR University, you understand the value of the education and experiences you gained here. Your contribution helps ensure that current and future students have the same opportunities you did.</p>
+                
+                <p>100% of your donation goes directly to supporting students and programs at TKR University.</p>
+                
+                <h3>Your Impact</h3>
+                <ul class="impact-list">
+                    <li>Scholarships for deserving students</li>
+                    <li>Modern facilities and equipment</li>
+                    <li>Faculty development programs</li>
+                    <li>Student research opportunities</li>
+                    <li>Extracurricular activities and clubs</li>
+                </ul>
+                
+                <p>All donations are tax-deductible as allowed by law. You will receive a receipt for your records.</p>
+            </div>
+            
+            <div class="donation-form">
+                <h2 class="section-title">Donation Form</h2>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grad-year">Graduation Year</label>
+                        <input type="number" id="grad-year" name="grad-year" min="1900" max="2099">
+                    </div>
+                    
+                    <!-- <div class="form-group"> 
+                        <label>Donation Amount</label>
+                        <div class="amount-options">
+                            <div class="amount-option">
+                                <input type="radio" id="amount-500" name="amount" value="500">
+                                <label for="amount-500">500</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-1000" name="amount" value="1000">
+                                <label for="amount-1000">1000</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-2000" name="amount" value="2000">
+                                <label for="amount-2000">2000</label>
+                            </div>
+                            <div class="amount-option">
+                                <input type="radio" id="amount-2500" name="amount" value="2500">
+                                <label for="amount-2500">2500</label>
+                            </div>
+                        </div>
+                        <div class="custom-amount">
+                            <label for="custom-amount">Or enter custom amount</label>
+                            <input type="number" id="custom-amount" name="custom-amount" min="1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fund">Select Fund</label>
+                        <select id="fund" name="fund">
+                            <option value="general">General Fund (Greatest Need)</option>
+                            <option value="scholarship">Scholarship Fund</option>
+                            <option value="faculty">Faculty Development</option>
+                            <option value="library">Library Resources</option>
+                            <option value="sports">Athletics Program</option>
+                            <option value="other">Other (please specify)</option>
+                        </select>
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <label for="comments">Comments (optional)</label>
+                        <input type="text" id="comments" name="comments" placeholder="Any special instructions or designations">
+                    </div>
+                    <li><a href="qr.html">DONATE NOW</a></li>
+                    <!-- <div class="link">
+                    <li><a href="qr.html"><button type="submit" class="btn">Donate Now</button></a></li></div> -->
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>TKR University Avenue</p>
+                    <p>Hyderabad, Telangana 500000</p>
+                    <p>Phone : 9989998979</p>
+                    <p>Email: alumni@tkruniversity.edu</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#">Alumni Events</a>
+                    <a href="#">Career Services</a>
+                    <a href="#">Update Your Information</a>
+                    <a href="#">Volunteer Opportunities</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TKR University Alumni Association. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

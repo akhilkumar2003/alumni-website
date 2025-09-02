@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login Form</title>
+    <style>
+    body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4; /* Light background */
+}
+.body div a{
+    text-decoration: none;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color:rgb(197, 178, 143);
+}
+
+.h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Darker heading color */
+}
+
+.container {
+    width: 350px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #d9534f; /* Red button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #c9302c; /* Darker red on hover */
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #007bff; /* Blue link color */
+    margin: 0 10px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.register-link {
+    color: #d9534f; /* Red register link */
+}
+</style> 
+</head>
+<body>
+    <div class="container">
+        <h1>Student Login Form</h1>
+        <form id="loginForm" action="insert.php" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username"  required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <a><button type="submit" class="login-btn">Login</button></a>
+            <h4 style="text-align: center;">or</h4>
+            <h5 style="text-align: center;">Don't have an account</h5>
+        </form>
+        <div class="links">
+            <a href="registration.html" class="register-btn">Register</a>
+            <a href="index.html" class="go back">go back</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+    body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4; /* Light background */
+    }
+    
+    .container {
+        width: 600px;
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    p {
+        text-align: center;
+        margin-bottom: 10px;
+        color: #555;
+    }
+    
+    .radio-group {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .radio-group label {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+    
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    
+    .form-group {
+        flex: 1;
+        margin-right: 10px;
+    }
+    
+    .form-group:last-child {
+        margin-right: 0;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .register-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #d9534f; /* Red button color */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .register-btn:hover {
+        background-color: #c9302c; /* Darker red on hover */
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+        <p>Select if you are a Student or an Alumni</p>
+        <div class="radio-group">
+            <input type="radio" id="student" name="userType" value="student" checked>
+            <label for="student">Student</label>
+            <input type="radio" id="alumni" name="userType" value="alumni">
+            <label for="alumni">Alumni</label>
+        </div>
+        <form id="registrationForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" id="middleName" name="middleName" placeholder="Middle Name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="currentCourse">Current Course:</label>
+                    <input type="text" id="currentCourse" name="currentCourse" placeholder="Enter Current Course" required>
+                </div>
+                <div class="form-group">
+                    <label for="collegeId">college ID:</label>
+                    <input type="text" id="collegeId" name="collegeId" placeholder="Enter college ID" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email ID" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Enter Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="re-enterPassword">Re-enter Password:</label>
+                    <input type="password" id="re-enterPassword" name="re-enterPassword" placeholder="Re-enter Password" required>
+                </div>
+            </div>
+        </form>
+        <div class="link">
+            <a href="registrationcomplete.html" class="registrationcomplete"><button  type="submit" class="register-btn" >Register</button></a>
+            </div>
+    </div>
+</body>
+</html>

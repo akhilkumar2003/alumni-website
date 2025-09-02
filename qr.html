@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment gateway</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #5f6368;
+        }
+        #qrcode {
+            margin: 20px auto;
+            padding: 20px;
+        }
+        button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+        .upi-id {
+            font-weight: bold;
+            margin: 15px 0;
+            color: #202124;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ALUMNI DONATION</h1>
+        
+        <!-- EDIT THIS UPI ID TO YOUR OWN -->
+        <div class="upi-id" id="displayUpiId">6304529550@naviaxis</div>
+        
+        <div id="qrcode">
+            <canvas id="qrCanvas"></canvas>
+        </div>
+        
+        <button id="downloadBtn">Download QR Code</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script>
+        // SET YOUR UPI ID HERE (edit this value)
+        const upiId = "6304529550@naviaxis";
+        
+        // Optional fixed values (edit if needed)
+        const fixedAmount = ""; // e.g., "100" for ₹100 or "" for no amount
+        const fixedNote = "Payment"; // e.g., "Dinner" or "Payment"
+        
+        // Display the UPI ID
+        document.getElementById('displayUpiId').textContent = upiId;
+        
+        // Generate QR code automatically when page loads
+        window.onload = function() {
+            generateQrCode();
+        };
+        
+        function generateQrCode() {
+            // Construct the UPI payment URL
+            let url = `upi://pay?pa=${encodeURIComponent(upiId)}`;
+            
+            if (fixedAmount) {
+                url += `&am=${fixedAmount}`;
+            }
+            
+            if (fixedNote) {
+                url += `&tn=${encodeURIComponent(fixedNote)}`;
+            }
+            
+            // Generate QR code
+            const canvas = document.getElementById('qrCanvas');
+            
+            QRCode.toCanvas(canvas, url, {
+                width: 250,
+                margin: 2,
+                color: {
+                    dark: '#000000',
+                    light: '#ffffff'
+                }
+            });
+        }
+        
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const canvas = document.getElementById('qrCanvas');
+            const link = document.createElement('a');
+            link.download = 'my-gpay-qr.png';
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
